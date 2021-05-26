@@ -1,4 +1,4 @@
-package at.grabher.snowworld;
+package at.grabher.snowworld.actors;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eeecc374-2f49-41db-98a7-4767e2469b53" name="Default Changelist" comment="" />
+    <list default="true" id="eeecc374-2f49-41db-98a7-4767e2469b53" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/actors/Actor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/actors/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Actor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/CannonBall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Rocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowflake$SIZE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowflake.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowworld.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowworld.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/CannonBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/CannonBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Rocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/Rocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Snowflake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/Snowflake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Snowworld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/Snowworld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/test.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +34,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YTQfL2MEkLFTDMSD3qqivUvMBV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -23,7 +46,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SnakeGameRefactored" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -34,7 +58,7 @@
       <recent name="C:\Users\DCV\Desktop\CC2021\InterfacesSnowworld\Slick2DTemplate\testdata" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Snowworld">
+  <component name="RunManager" selected="Application.SnakeGame">
     <configuration name="AlphaMapTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.newdawn.slick.tests.AlphaMapTest" />
       <module name="Slick2DTemplate" />
@@ -48,12 +72,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SnakeGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="at.grabher.snake.SnakeGame" />
+      <module name="Slick2DTemplate" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.grabher.snake.actors.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Snowworld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="at.grabher.snowworld.Snowworld" />
       <module name="Slick2DTemplate" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="at.grabher.snowworld.*" />
+          <option name="PATTERN" value="at.grabher.snowworld.actors.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -63,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SnakeGame" />
         <item itemvalue="Application.Snowworld" />
         <item itemvalue="Application.AlphaMapTest" />
       </list>
@@ -82,13 +120,35 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/Snowworld.java</url>
-          <line>30</line>
+          <line>39</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/actors/Snowflake.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/actors/Rocket.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
