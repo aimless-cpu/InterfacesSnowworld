@@ -20,13 +20,13 @@ public class Element implements Actor {
     public Element(int x, int y) {
         this.x = x;
         this.y = y;
-        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
+        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
     }
 
     public Element(int x, int y, Shape collisionEat) {
         this.x = x;
         this.y = y;
-        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
+        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
         this.collisionEat = collisionEat;
     }
 

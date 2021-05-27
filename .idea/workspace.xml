@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeecc374-2f49-41db-98a7-4767e2469b53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/actors/Actor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/actors/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Actor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/CannonBall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Rocket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowflake$SIZE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowflake.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowworld.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snowworld/Snowworld.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/CannonBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/CannonBall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Rocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/Rocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Snowflake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/actors/Snowflake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/Snowworld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snowworld/Snowworld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snowworld/test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/at/grabher/snake/actors/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snake/actors/Element.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +134,16 @@
           <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/actors/Rocket.java</url>
           <line>32</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
