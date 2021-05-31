@@ -3,6 +3,7 @@ package at.grabher.snake;
 
 import at.grabher.snake.actors.Border;
 import at.grabher.snake.actors.Element;
+import at.grabher.snake.actors.PrintString;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
@@ -20,7 +21,9 @@ public class SnakeGame extends BasicGame {
     private int elapsedTime = 0; //ms
 
 
+
     Border border = new Border();
+
 
     //constructor
     public SnakeGame(String title) {
@@ -99,6 +102,16 @@ public class SnakeGame extends BasicGame {
             for (int i = 0; i < this.actors.size() - 2; i++) {
                 if (this.headCollision.intersects(this.actors.get(i).getCollisionShape())) {
                     System.out.println("collision self");
+
+
+                    try {
+                        Thread.sleep(CLOCK * 2);
+                    } catch(InterruptedException ex)
+                    {
+                        Thread.currentThread().interrupt();
+                    }
+
+
                 }
             }
 
@@ -127,8 +140,6 @@ public class SnakeGame extends BasicGame {
                 this.actors.add(tmp);
                 this.head.setNext(tmp);
                 this.head = tmp;
-
-
 
             } else {
                 //movement
@@ -160,7 +171,7 @@ public class SnakeGame extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
 
         border.render(gameContainer, graphics);
-
+        collisionSelf.render(gameContainer, graphics);
 
         for (Element element : this.actors) {
             element.render(gameContainer, graphics);
