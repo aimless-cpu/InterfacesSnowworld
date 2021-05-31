@@ -1,12 +1,11 @@
 package at.grabher.snake;
 
 
+import at.grabher.snake.actors.Border;
 import at.grabher.snake.actors.Element;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -16,12 +15,11 @@ public class SnakeGame extends BasicGame {
     public static final int GRID_SIZE = 40;
     public static final int CLOCK = 500; //ms
     private List<Element> actors;
-    private Element tail, head, elementDefault, element, test;
+    private List<Border> borders;
+    private Element tail, head, elementDefault, element;
     private int elapsedTime = 0; //ms
-    private Shape collisionShape;
 
-
-    private Shape collisionEat;
+    Border border = new Border();
 
     //constructor
     public SnakeGame(String title) {
@@ -30,32 +28,13 @@ public class SnakeGame extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
+
+
         this.actors = new LinkedList<>();
-
-//        Element element0 = new Element(3, 3);
-//        Element element1 = new Element(4, 3);
-//        Element element2 = new Element(5, 3);
-//
-//        Element element3 = new Element(6, 3, this.collisionEat);
-//        this.collisionEat = new Circle(element3.getX() * SnakeGame.GRID_SIZE+20, element3.getY() * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
-
-//        element0.setNext(element1);
-//        element1.setNext(element2);
-//        element2.setNext(element3);
-
-
-        // gefressen dann merke position vom letzen element und warte einen schritt
-//        int x = this.tail.getX();
-//        int y = this.tail.getY()
-
-//        this.actors.add(element0);
-//        this.actors.add(element1);
-//        this.actors.add(element2);
-//        this.actors.add(element3);
 
         for (int i = 0; i < 5; i++) {
             elementDefault = new Element (i + 3, 3);
-            this.actors.add(elementDefault);
+            this.actors.add(0 + i, elementDefault);
         }
 
         this.tail = this.actors.get(0);
@@ -64,9 +43,6 @@ public class SnakeGame extends BasicGame {
         for (int i = 0; i < this.actors.size() - 1; i++) {
             this.actors.get(i).setNext(this.actors.get(i + 1));
         }
-
-        //this.collisionShape = new Circle(element3.getX() * SnakeGame.GRID_SIZE+20, element3.getY() * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
-//nächster versuch umgekehrt
 
         Element element = new Element(6, 10);
         this.element = element;
@@ -83,6 +59,7 @@ public class SnakeGame extends BasicGame {
         for (Element element : this.actors) {
             element.update(gameContainer, delta);
         }
+
 
         this.elapsedTime += delta;
 
@@ -108,18 +85,18 @@ public class SnakeGame extends BasicGame {
 
         if (this.elapsedTime > CLOCK) {
 
-            this.test = this.head;
+
             System.out.println(this.actors.size());
 
-            if (this.test.getCollisionShape().intersects(this.element.getCollisionShape())) {
+            if (this.head.getCollisionShape().intersects(this.border.getCollisionBorderWest()) ||
+                    this.head.getCollisionShape().intersects(this.border.getCollisionBorderEast()) ||
+                    this.head.getCollisionShape().intersects(this.border.getCollisionBorderNorth()) ||
+                    this.head.getCollisionShape().intersects(this.border.getCollisionBorderSouth())) {
+                System.out.println("collision border ...");
+            }
+
+            if (this.head.getCollisionShape().intersects(this.element.getCollisionShape())) {
                 System.out.println("collision");
-                //this.actors.remove(this.element);
-
-
-//                Element point = this.element;
-//                this.actors.remove(element);
-//                this.actors.add(point);
-
 
                 for (int i = 0; i < this.actors.size() - 1; i++) {
                     this.actors.get(i).setNext(this.actors.get(i + 1));
@@ -129,31 +106,12 @@ public class SnakeGame extends BasicGame {
                 this.head = this.actors.get(this.actors.size() - 1);
 
                 Random random = new Random();
-                Element element = new Element(random.nextInt(7), random.nextInt(7));
+                Element element = new Element(random.nextInt(16) + 2, random.nextInt(11) + 2);
                 this.actors.add(element);
                 this.element = this.actors.get(this.actors.size() - 1);
 
-
-//                Element element = new Element(8, 10);
-//                this.actors.add(element);
-
-
-
-//                element0.setNext(element1);
-//                element1.setNext(element2);
-//                element2.setNext(element3);
-
-
-
-                //this.element.setX(this.element.getX() + directionX);
-                //this.element.setY(this.element.getY() + directionY);
-
-
                 //movement
-                //this.tail = this.element;
-
                 Element tmp  = this.tail;
-
                 this.tail = tmp.getNext();
                 tmp.setNext(null);
                 head.setNext(tmp);
@@ -171,9 +129,9 @@ public class SnakeGame extends BasicGame {
 
                 this.elapsedTime = 0;
 
-            } else {
+            }   else {
                 //movement
-                Element tmp  = this.tail;
+                Element tmp = this.tail;
                 this.tail = tmp.getNext();
                 tmp.setNext(null);
                 head.setNext(tmp);
@@ -194,17 +152,20 @@ public class SnakeGame extends BasicGame {
             }
 
 
-
-
       }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
+
+        border.render(gameContainer, graphics);
         for (Element element : this.actors) {
             element.render(gameContainer, graphics);
         }
+
+
     }
+
 
     public static void main(String[] argv) {
 
