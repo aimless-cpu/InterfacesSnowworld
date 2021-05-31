@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eeecc374-2f49-41db-98a7-4767e2469b53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/at/grabher/snake/actors/Border.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snake/SnakeGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Slick2DTemplate/at/grabher/snake/SnakeGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="eeecc374-2f49-41db-98a7-4767e2469b53" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SnakeGameRefactored" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SnakeRefined" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -122,39 +117,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/Snowworld.java</url>
+          <url>file://$PROJECT_DIR$/../../SnakeRefined/InterfacesSnowworld/src/at/grabher/snowworld/Snowworld.java</url>
           <line>39</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/actors/Snowflake.java</url>
+          <url>file://$PROJECT_DIR$/../../SnakeRefined/InterfacesSnowworld/src/at/grabher/snowworld/actors/Snowflake.java</url>
           <line>48</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snowworld/actors/Rocket.java</url>
+          <url>file://$PROJECT_DIR$/../../SnakeRefined/InterfacesSnowworld/src/at/grabher/snowworld/actors/Rocket.java</url>
           <line>32</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/at/grabher/snake/SnakeGame.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/../../SnakeRefined/InterfacesSnowworld/src/at/grabher/snake/SnakeGame.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
@@ -162,5 +142,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/InterfacesSnowworld$SnakeGame.ic" NAME="SnakeGame Coverage Results" MODIFIED="1622478594629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>at.grabher.snake.actors.*</FILTER>
+    </SUITE>
   </component>
 </project>

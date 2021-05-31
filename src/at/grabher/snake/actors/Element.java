@@ -14,7 +14,6 @@ public class Element implements Actor {
     private Element next;
     private Random random;
     private Shape collisionShape;
-    private Shape collisionEat;
 
 
     public Element(int x, int y) {
@@ -23,16 +22,17 @@ public class Element implements Actor {
         this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
     }
 
-    public Element(int x, int y, Shape collisionEat) {
-        this.x = x;
-        this.y = y;
-        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
-        this.collisionEat = collisionEat;
-    }
+//    public Element(int x, int y, Shape collision) {
+//        this.x = x;
+//        this.y = y;
+//        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
+//
+//    }
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
-
+        this.collisionShape.setCenterX(this.x * SnakeGame.GRID_SIZE + 20);
+        this.collisionShape.setCenterY(this.y * SnakeGame.GRID_SIZE + 20);
     }
 
     @Override
@@ -41,6 +41,7 @@ public class Element implements Actor {
         graphics.setColor(new Color(255, 0, 0));
         graphics.draw(this.collisionShape);
         graphics.setColor(Color.white);
+
     }
 
     //getter setter

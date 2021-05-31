@@ -4,8 +4,8 @@ package at.grabher.snake;
 import at.grabher.snake.actors.Border;
 import at.grabher.snake.actors.Element;
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -15,9 +15,10 @@ public class SnakeGame extends BasicGame {
     public static final int GRID_SIZE = 40;
     public static final int CLOCK = 500; //ms
     private List<Element> actors;
-    private List<Border> borders;
     private Element tail, head, elementDefault, element;
+    private Shape headCollision;
     private int elapsedTime = 0; //ms
+
 
     Border border = new Border();
 
@@ -32,8 +33,8 @@ public class SnakeGame extends BasicGame {
 
         this.actors = new LinkedList<>();
 
-        for (int i = 0; i < 5; i++) {
-            elementDefault = new Element (i + 3, 3);
+        for (int i = 0; i < 3; i++) {
+            elementDefault = new Element(i + 3, 3);
             this.actors.add(0 + i, elementDefault);
         }
 
@@ -63,9 +64,6 @@ public class SnakeGame extends BasicGame {
 
         this.elapsedTime += delta;
 
-        int newX = this.head.getX();
-        int newY = this.head.getY();
-
         if (gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)) {
             directionX = 1;
             directionY = 0;
@@ -83,6 +81,7 @@ public class SnakeGame extends BasicGame {
             directionY = 1;
         }
 
+
         if (this.elapsedTime > CLOCK) {
 
 
@@ -95,70 +94,74 @@ public class SnakeGame extends BasicGame {
                 System.out.println("collision border ...");
             }
 
-            if (this.head.getCollisionShape().intersects(this.element.getCollisionShape())) {
+            this.headCollision = new Circle((this.head.getX() + directionX) * SnakeGame.GRID_SIZE+20, (this.head.getY() + directionY) * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
+
+            for (int i = 0; i < this.actors.size() - 2; i++) {
+                if (this.headCollision.intersects(this.actors.get(i).getCollisionShape())) {
+                    System.out.println("collision self");
+                }
+            }
+
+            if (this.headCollision.intersects(this.element.getCollisionShape())) {
                 System.out.println("collision");
 
-                for (int i = 0; i < this.actors.size() - 1; i++) {
-                    this.actors.get(i).setNext(this.actors.get(i + 1));
+                try
+                {
+                    Thread.sleep(CLOCK);
+                }
+                catch(InterruptedException ex)
+                {
+                    Thread.currentThread().interrupt();
                 }
 
-                this.tail = this.actors.get(0);
-                this.head = this.actors.get(this.actors.size() - 1);
-
+                this.actors.remove(this.element);
                 Random random = new Random();
                 Element element = new Element(random.nextInt(16) + 2, random.nextInt(11) + 2);
                 this.actors.add(element);
-                this.element = this.actors.get(this.actors.size() - 1);
+                this.element = element;
 
-                //movement
-                Element tmp  = this.tail;
-                this.tail = tmp.getNext();
-                tmp.setNext(null);
-                head.setNext(tmp);
+                int newX = this.head.getX() + directionX;
+                int newY = this.head.getY() + directionY;
 
-                newX = newX + directionX;
-                newY = newY + directionY;
-
-                tmp.setX(newX);
-                tmp.getCollisionShape().setCenterX(newX * SnakeGame.GRID_SIZE + 20);
-
-                tmp.setY(newY);
-                tmp.getCollisionShape().setCenterY(newY * SnakeGame.GRID_SIZE + 20);
-
+                Element tmp = new Element(newX, newY);
+                this.actors.add(tmp);
+                this.head.setNext(tmp);
                 this.head = tmp;
 
-                this.elapsedTime = 0;
 
-            }   else {
+
+            } else {
                 //movement
-                Element tmp = this.tail;
-                this.tail = tmp.getNext();
-                tmp.setNext(null);
-                head.setNext(tmp);
-
-                newX = newX + directionX;
-                newY = newY + directionY;
-
-                tmp.setX(newX);
-                tmp.getCollisionShape().setCenterX(newX * SnakeGame.GRID_SIZE + 20);
-
-                tmp.setY(newY);
-                tmp.getCollisionShape().setCenterY(newY * SnakeGame.GRID_SIZE + 20);
-
-                this.head = tmp;
-
-                this.elapsedTime = 0;
+                moveForward(0);
 
             }
 
 
-      }
+        }
+    }
+
+    private void moveForward(int time) {
+        Element tmp = this.tail;
+        this.tail = tmp.getNext();
+        tmp.setNext(null);
+        this.head.setNext(tmp);
+
+        int newX = this.head.getX() + directionX;
+        int newY = this.head.getY() + directionY;
+
+        tmp.setX(newX);
+        tmp.setY(newY);
+        this.head = tmp;
+
+        this.elapsedTime = time;
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
 
         border.render(gameContainer, graphics);
+
+
         for (Element element : this.actors) {
             element.render(gameContainer, graphics);
         }
