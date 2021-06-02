@@ -4,10 +4,13 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class PrintString implements Actor {
-    private float x,y;
+    private float x = 400.0f;
+    private float y = 280.0f;
     private String string;
 
-    public PrintString(int x, int y, String string) {
+    //private String collisionSelf  = "Collision with yourself!";
+
+    public PrintString() {
         this.x = x;
         this.y = y;
         this.string = string;
@@ -20,7 +23,17 @@ public class PrintString implements Actor {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        PrintString collisionSelf = new PrintString(400, 280, "GAME OVER !");
-        graphics.drawString(collisionSelf);
+
+        graphics.drawString(this.string, this.x, this.y);
+
+
+    }
+
+    public String getString() {
+        return string;
+    }
+
+    public void setString(String string) {
+        this.string = string;
     }
 }

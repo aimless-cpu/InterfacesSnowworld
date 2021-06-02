@@ -19,10 +19,12 @@ public class SnakeGame extends BasicGame {
     private Element tail, head, elementDefault, element;
     private Shape headCollision;
     private int elapsedTime = 0; //ms
-
+    private boolean collisionSelf = false;
+    private boolean collisionBorder = false;
 
 
     Border border = new Border();
+    PrintString printString = new PrintString();
 
 
     //constructor
@@ -67,22 +69,44 @@ public class SnakeGame extends BasicGame {
 
         this.elapsedTime += delta;
 
+
+
         if (gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            directionX = 1;
-            directionY = 0;
+            if (directionX == -1) {
+            } else {
+                directionX = 1;
+                directionY = 0;
+            }
         }
+
         if (gameContainer.getInput().isKeyDown(Input.KEY_LEFT)) {
-            directionX = -1;
-            directionY = 0;
+            if (directionX == 1) {
+            } else {
+                directionX = -1;
+                directionY = 0;
+            }
         }
+
         if (gameContainer.getInput().isKeyDown(Input.KEY_UP)) {
-            directionX = 0;
-            directionY = -1;
+            if (directionY == -1) {
+
+            } else {
+                directionX = 0;
+                directionY = -1;
+            }
         }
+
         if (gameContainer.getInput().isKeyDown(Input.KEY_DOWN)) {
-            directionX = 0;
-            directionY = 1;
+            if (directionY == -1) {
+
+            } else {
+                directionX = 0;
+                directionY = 1;
+            }
+
         }
+
+
 
 
         if (this.elapsedTime > CLOCK) {
@@ -95,6 +119,9 @@ public class SnakeGame extends BasicGame {
                     this.head.getCollisionShape().intersects(this.border.getCollisionBorderNorth()) ||
                     this.head.getCollisionShape().intersects(this.border.getCollisionBorderSouth())) {
                 System.out.println("collision border ...");
+                printString.setString("You collided with the border!");
+                collisionBorder = true;
+
             }
 
             this.headCollision = new Circle((this.head.getX() + directionX) * SnakeGame.GRID_SIZE+20, (this.head.getY() + directionY) * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
@@ -102,16 +129,8 @@ public class SnakeGame extends BasicGame {
             for (int i = 0; i < this.actors.size() - 2; i++) {
                 if (this.headCollision.intersects(this.actors.get(i).getCollisionShape())) {
                     System.out.println("collision self");
-
-
-                    try {
-                        Thread.sleep(CLOCK * 2);
-                    } catch(InterruptedException ex)
-                    {
-                        Thread.currentThread().interrupt();
-                    }
-
-
+                    printString.setString("You collided with yourself!");
+                    collisionSelf = true;
                 }
             }
 
@@ -120,7 +139,7 @@ public class SnakeGame extends BasicGame {
 
                 try
                 {
-                    Thread.sleep(CLOCK);
+                    Thread.sleep(CLOCK - 100);
                 }
                 catch(InterruptedException ex)
                 {
@@ -146,8 +165,6 @@ public class SnakeGame extends BasicGame {
                 moveForward(0);
 
             }
-
-
         }
     }
 
@@ -171,7 +188,15 @@ public class SnakeGame extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
 
         border.render(gameContainer, graphics);
-        collisionSelf.render(gameContainer, graphics);
+        if (collisionSelf) {
+            printString.render(gameContainer, graphics);
+        }
+        if (collisionBorder) {
+            printString.render(gameContainer, graphics);
+        }
+
+
+
 
         for (Element element : this.actors) {
             element.render(gameContainer, graphics);
