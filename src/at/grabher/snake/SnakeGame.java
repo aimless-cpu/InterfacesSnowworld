@@ -21,10 +21,12 @@ public class SnakeGame extends BasicGame {
     private int elapsedTime = 0; //ms
     private boolean collisionSelf = false;
     private boolean collisionBorder = false;
+    private Element mouth;
 
 
     Border border = new Border();
     PrintString printString = new PrintString();
+
 
 
     //constructor
@@ -45,6 +47,10 @@ public class SnakeGame extends BasicGame {
 
         this.tail = this.actors.get(0);
         this.head = this.actors.get(this.actors.size() - 1);
+        //this.head.setHead(true);
+
+        mouth = new Element(this.head.getX() * GRID_SIZE, this.head.getY() * GRID_SIZE);
+        mouth.setHead(true);
 
         for (int i = 0; i < this.actors.size() - 1; i++) {
             this.actors.get(i).setNext(this.actors.get(i + 1));
@@ -66,11 +72,9 @@ public class SnakeGame extends BasicGame {
             element.update(gameContainer, delta);
         }
 
-
         this.elapsedTime += delta;
 
-
-
+        gameContainer.getInput().disableKeyRepeat();
         if (gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)) {
             if (directionX == -1) {
             } else {
@@ -79,6 +83,7 @@ public class SnakeGame extends BasicGame {
             }
         }
 
+        gameContainer.getInput().disableKeyRepeat();
         if (gameContainer.getInput().isKeyDown(Input.KEY_LEFT)) {
             if (directionX == 1) {
             } else {
@@ -87,30 +92,25 @@ public class SnakeGame extends BasicGame {
             }
         }
 
+        gameContainer.getInput().disableKeyRepeat();
         if (gameContainer.getInput().isKeyDown(Input.KEY_UP)) {
             if (directionY == -1) {
-
             } else {
                 directionX = 0;
                 directionY = -1;
             }
         }
 
+        gameContainer.getInput().disableKeyRepeat();
         if (gameContainer.getInput().isKeyDown(Input.KEY_DOWN)) {
             if (directionY == -1) {
-
             } else {
                 directionX = 0;
                 directionY = 1;
             }
-
         }
 
-
-
-
         if (this.elapsedTime > CLOCK) {
-
 
             System.out.println(this.actors.size());
 
@@ -121,7 +121,6 @@ public class SnakeGame extends BasicGame {
                 System.out.println("collision border ...");
                 printString.setString("You collided with the border!");
                 collisionBorder = true;
-
             }
 
             this.headCollision = new Circle((this.head.getX() + directionX) * SnakeGame.GRID_SIZE+20, (this.head.getY() + directionY) * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2);
@@ -148,9 +147,19 @@ public class SnakeGame extends BasicGame {
 
                 this.actors.remove(this.element);
                 Random random = new Random();
-                Element element = new Element(random.nextInt(16) + 2, random.nextInt(11) + 2);
-                this.actors.add(element);
-                this.element = element;
+
+                int randomX, randomY;
+                randomX = random.nextInt(16) + 2;
+                randomY = random.nextInt(11) + 2;
+
+                for (int i = 0; i < this.actors.size() - 1; i++) {
+                    if (randomX != this.actors.get(i).getX() || randomY != this.actors.get(i).getY()) {
+                        Element element = new Element(randomX, randomY);
+                        this.actors.add(element);
+                        this.element = element;
+                        break;
+                    }
+                }
 
                 int newX = this.head.getX() + directionX;
                 int newY = this.head.getY() + directionY;
@@ -161,9 +170,7 @@ public class SnakeGame extends BasicGame {
                 this.head = tmp;
 
             } else {
-                //movement
                 moveForward(0);
-
             }
         }
     }
@@ -180,7 +187,6 @@ public class SnakeGame extends BasicGame {
         tmp.setX(newX);
         tmp.setY(newY);
         this.head = tmp;
-
         this.elapsedTime = time;
     }
 
@@ -188,23 +194,15 @@ public class SnakeGame extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
 
         border.render(gameContainer, graphics);
-        if (collisionSelf) {
+
+        if (collisionSelf || collisionBorder) {
             printString.render(gameContainer, graphics);
         }
-        if (collisionBorder) {
-            printString.render(gameContainer, graphics);
-        }
-
-
-
 
         for (Element element : this.actors) {
             element.render(gameContainer, graphics);
         }
-
-
     }
-
 
     public static void main(String[] argv) {
 

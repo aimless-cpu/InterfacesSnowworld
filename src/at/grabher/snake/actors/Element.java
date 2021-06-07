@@ -14,20 +14,13 @@ public class Element implements Actor {
     private Element next;
     private Random random;
     private Shape collisionShape;
-
+    private boolean isHead = false;
 
     public Element(int x, int y) {
         this.x = x;
         this.y = y;
         this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
     }
-
-//    public Element(int x, int y, Shape collision) {
-//        this.x = x;
-//        this.y = y;
-//        this.collisionShape = new Circle(this.x * SnakeGame.GRID_SIZE+20, this.y * SnakeGame.GRID_SIZE+20, SnakeGame.GRID_SIZE/2 - 5);
-//
-//    }
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
@@ -37,8 +30,18 @@ public class Element implements Actor {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        graphics.fillOval(this.x * SnakeGame.GRID_SIZE, this.y * SnakeGame.GRID_SIZE, SnakeGame.GRID_SIZE - 1, SnakeGame.GRID_SIZE -1);
-        graphics.setColor(new Color(255, 0, 0));
+        if (isHead) {
+            graphics.setColor(new Color(0, 125, 0));
+            graphics.fillOval(this.x * SnakeGame.GRID_SIZE, this.y * SnakeGame.GRID_SIZE, SnakeGame.GRID_SIZE - 1, SnakeGame.GRID_SIZE -1);
+        } else {
+            graphics.fillOval(this.x * SnakeGame.GRID_SIZE, this.y * SnakeGame.GRID_SIZE, SnakeGame.GRID_SIZE - 1, SnakeGame.GRID_SIZE -1);
+        }
+
+
+
+
+
+        graphics.setColor(new Color(125, 0, 0));
         graphics.draw(this.collisionShape);
         graphics.setColor(Color.white);
 
@@ -83,5 +86,13 @@ public class Element implements Actor {
 
     public void setCollisionShape(Shape collisionShape) {
         this.collisionShape = collisionShape;
+    }
+
+    public boolean isHead() {
+        return isHead;
+    }
+
+    public void setHead(boolean head) {
+        isHead = head;
     }
 }
